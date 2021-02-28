@@ -1,1 +1,13 @@
 version: '3.3'
+services: 
+    telegramxbot:
+        container_name: telegramxbot
+        image: telegramxbot-image
+        environment:
+           - bot.huebot.days-of-week.cron=0 0 9 * * 1-7
+           - bot.huebot.days-of-week.zone=Europe/Moscow
+           - bot.huebot.messages.count.max=10
+           - bot.huebot.messages.count.min=6 
+        restart: "always"
+
+
