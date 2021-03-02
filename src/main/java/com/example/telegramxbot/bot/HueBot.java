@@ -4,6 +4,7 @@ import com.example.telegramxbot.bot.cache.ChatIdCache;
 import com.example.telegramxbot.bot.service.HueBotService;
 import com.example.telegramxbot.bot.service.QuoteService;
 import com.example.telegramxbot.bot.service.RandomService;
+import com.example.telegramxbot.bot.service.SorryService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,6 +32,8 @@ public class HueBot extends TelegramLongPollingBot {
     private QuoteService quoteService;
     @Autowired
     private ChatIdCache chatIdCache;
+    @Autowired
+    private SorryService sorryService;
 
     @Override
     public String getBotUsername() {
@@ -47,14 +50,20 @@ public class HueBot extends TelegramLongPollingBot {
         if (quoteService.isNeedToAnswerWithQuote(update.getMessage())) {
             processQuoteAnswer(update.getMessage());
         }
+        else if (sorryService.isNeedSorry(update.getMessage(), username)) {
+            processSorryAnswer(update.getMessage());
+        }
         else {
             processHueAnswer(update);
         }
     }
 
     private void processQuoteAnswer(Message message) {
-        String quote = quoteService.getQuote();
-        sendAnswer(message.getChatId().toString(), message.getMessageId(), quote, true);
+        sendAnswer(message.getChatId().toString(), message.getMessageId(), quoteService.getQuote(), true);
+    }
+
+    private void processSorryAnswer(Message message) {
+        sendAnswer(message.getChatId().toString(), message.getMessageId(), sorryService.getSorryMessage(), false);
     }
 
     private void processHueAnswer(Update update) {
