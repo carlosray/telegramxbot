@@ -25,14 +25,14 @@ public class SorryService {
             "Къысфэгъэгъу"};
 
     public boolean isNeedSorry(Message message, String botUsername) {
-        return Optional.of(message.getText())
-                .filter(StringUtils::isNotBlank)
-                .map(String::toLowerCase)
-                .filter(text -> StringUtils.containsAny(text,"извин", "извен", "проси проще"))
-                .flatMap(text -> Optional.ofNullable(message.getReplyToMessage())
-                        .map(Message::getFrom)
-                        .filter(User::getIsBot)
-                        .filter(user -> user.getUserName().equals(botUsername)))
+        return Optional.ofNullable(message.getReplyToMessage())
+                .map(Message::getFrom)
+                .filter(User::getIsBot)
+                .filter(user -> user.getUserName().equals(botUsername))
+                .flatMap(user -> Optional.of(message.getText())
+                        .filter(StringUtils::isNotBlank)
+                        .map(String::toLowerCase)
+                        .filter(text -> StringUtils.containsAny(text,"извин", "извен", "проси проще")))
                 .isPresent();
     }
 
