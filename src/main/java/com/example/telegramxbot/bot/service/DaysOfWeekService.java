@@ -4,13 +4,14 @@ import com.example.telegramxbot.bot.HueBot;
 import com.example.telegramxbot.bot.cache.ChatIdCache;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +24,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Slf4j
 public class DaysOfWeekService {
-    private final HueBot hueBot;
+    @Autowired
+    private ApplicationContext applicationContext;
     @Value("${bot.huebot.days-of-week.zone:Europe/Moscow}")
     private String zone;
     private final ChatIdCache chatIdCache;
@@ -69,8 +71,9 @@ public class DaysOfWeekService {
                 .photo(new InputFile(resourceInputStream, fileName))
                 .build();
         try {
+            final HueBot hueBot = applicationContext.getBean(HueBot.class);
             hueBot.execute(messageImage);
-        } catch (TelegramApiException e) {
+        } catch (Exception e) {
             log.error("Ошибка отправки сообщения", e);
         }
     }
