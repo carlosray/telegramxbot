@@ -9,16 +9,20 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
+import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 @Component
-public class HueBot extends TelegramLongPollingBot {
+public class HueBot extends TelegramLongPollingCommandBot {
     @Value("${bot.huebot.username}")
     private String username;
     @Value("${bot.huebot.token}")
@@ -34,6 +38,14 @@ public class HueBot extends TelegramLongPollingBot {
     private ChatIdCache chatIdCache;
     @Autowired
     private SorryService sorryService;
+    @Autowired
+    private List<BotCommand> commands = new ArrayList<>();
+
+    @PostConstruct
+    void init() {
+        BotCommand[] array = new BotCommand[commands.size()];
+        registerAll(commands.toArray(array));
+    }
 
     @Override
     public String getBotUsername() {
@@ -46,7 +58,7 @@ public class HueBot extends TelegramLongPollingBot {
     }
 
     @Override
-    public void onUpdateReceived(Update update) {
+    public void processNonCommandUpdate(Update update) {
         if (quoteService.isNeedToAnswerWithQuote(update.getMessage())) {
             processQuoteAnswer(update.getMessage());
         }

@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.time.DayOfWeek;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +32,11 @@ public class DaysOfWeekService {
 
     @Scheduled(cron = "${bot.huebot.days-of-week.cron}", zone = "${bot.huebot.days-of-week.zone:Europe/Moscow}")
     public void sendImage() {
-        chatIdCache.getGroupChatIds().forEach(chatId -> {
+        this.sendImage(chatIdCache.getGroupChatIds());
+    }
+
+    public void sendImage(Set<String> chatIds) {
+        chatIds.forEach(chatId -> {
             final DayOfWeek dayOfWeek = getDayOfWeek();
             try (InputStream resourceInputStream = getResourceInputStream(dayOfWeek)) {
                 sendImageToTelegram(chatId, resourceInputStream, imageFileName(dayOfWeek));
