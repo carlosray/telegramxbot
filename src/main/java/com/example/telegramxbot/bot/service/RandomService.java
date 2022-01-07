@@ -1,11 +1,11 @@
 package com.example.telegramxbot.bot.service;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RandomService {
@@ -31,12 +31,10 @@ public class RandomService {
         if (countMap.get(chatId).decrementAndGet() == 0) {
             countMap.put(chatId, getRandomCount());
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
-
 
 
 }

@@ -1,6 +1,6 @@
 package com.example.telegramxbot.bot.command;
 
-import com.example.telegramxbot.bot.service.DaysOfWeekService;
+import com.example.telegramxbot.bot.service.feature.DaysOfWeekService;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.Chat;

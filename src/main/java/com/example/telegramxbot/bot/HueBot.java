@@ -1,10 +1,10 @@
 package com.example.telegramxbot.bot;
 
 import com.example.telegramxbot.bot.cache.ChatIdCache;
-import com.example.telegramxbot.bot.service.HueBotService;
-import com.example.telegramxbot.bot.service.QuoteService;
+import com.example.telegramxbot.bot.service.feature.HueBotService;
+import com.example.telegramxbot.bot.service.feature.QuoteService;
 import com.example.telegramxbot.bot.service.RandomService;
-import com.example.telegramxbot.bot.service.SorryService;
+import com.example.telegramxbot.bot.service.feature.SorryService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -85,9 +85,10 @@ public class HueBot extends TelegramLongPollingCommandBot {
                 .filter(message -> StringUtils.isNotBlank(message.getText()))
                 .filter(message -> !StringUtils.isNumericSpace(message.getText()))
                 .findAny()
+                .filter(message -> randomService.isNeedAnswer(message.getChatId()))
                 .ifPresent(message -> {
                     String hueString = hueBotService.getHueString(message.getText());
-                    if (StringUtils.isNotBlank(hueString) && randomService.isNeedAnswer(message.getChatId())) {
+                    if (StringUtils.isNotBlank(hueString)) {
                         sendAnswer(message.getChatId().toString(), message.getMessageId(), hueString, false);
                     }
                 });

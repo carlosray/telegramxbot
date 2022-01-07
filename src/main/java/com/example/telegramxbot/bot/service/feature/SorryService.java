@@ -1,5 +1,6 @@
-package com.example.telegramxbot.bot.service;
+package com.example.telegramxbot.bot.service.feature;
 
+import com.example.telegramxbot.bot.service.RandomService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

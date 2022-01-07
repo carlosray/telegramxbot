@@ -1,5 +1,6 @@
-package com.example.telegramxbot.bot.service;
+package com.example.telegramxbot.bot.service.feature;
 
+import com.example.telegramxbot.bot.service.RandomService;
 import com.google.common.collect.Sets;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;

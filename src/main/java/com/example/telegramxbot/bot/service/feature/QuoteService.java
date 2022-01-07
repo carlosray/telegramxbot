@@ -1,4 +1,4 @@
-package com.example.telegramxbot.bot.service;
+package com.example.telegramxbot.bot.service.feature;
 
 import com.example.telegramxbot.bot.model.Quote;
 import com.fasterxml.jackson.core.type.TypeReference;
