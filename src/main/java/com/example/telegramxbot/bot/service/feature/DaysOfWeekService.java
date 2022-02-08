@@ -1,7 +1,15 @@
 package com.example.telegramxbot.bot.service.feature;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.DayOfWeek;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
 import com.example.telegramxbot.bot.HueBot;
 import com.example.telegramxbot.bot.cache.ChatIdCache;
+import com.example.telegramxbot.bot.service.integration.GoogleImagesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,26 +21,19 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.DayOfWeek;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.Set;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class DaysOfWeekService {
     @Autowired
     private ApplicationContext applicationContext;
-    @Value("${bot.huebot.days-of-week.zone:Europe/Moscow}")
+    @Value("#{botSettings.birthday.zone}")
     private String zone;
     private final ChatIdCache chatIdCache;
     private final GoogleImagesService imagesService;
     private static final String FORMAT = ".jpg";
 
-    @Scheduled(cron = "${bot.huebot.days-of-week.cron}", zone = "${bot.huebot.days-of-week.zone:Europe/Moscow}")
+    @Scheduled(cron = "#{botSettings.daysOfWeek.cron}", zone = "#{botSettings.daysOfWeek.zone}")
     public void sendImage() {
         this.sendImage(chatIdCache.getGroupChatIds());
     }

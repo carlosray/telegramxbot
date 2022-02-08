@@ -7,7 +7,17 @@ services:
            - bot.huebot.days-of-week.cron=0 0 9 * * 1-7
            - bot.huebot.days-of-week.zone=Europe/Moscow
            - bot.huebot.messages.count.max=10
-           - bot.huebot.messages.count.min=6 
+           - bot.huebot.messages.count.min=6
         restart: "always"
+    postgres-xbot:
+        container_name: postgres-xbot
+        image: postgres
+        environment:
+          - POSTGRES_PASSWORD=xbot_pwd
+          - POSTGRES_USER=xbot_user
+          - POSTGRES_DB=xbot
+          - POSTGRES_HOST_AUTH_METHOD=trust
+        restart: "always"
+        ports: [ "5432:5432" ]
 
 

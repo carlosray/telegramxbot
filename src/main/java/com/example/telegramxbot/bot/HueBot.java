@@ -1,13 +1,20 @@
 package com.example.telegramxbot.bot;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+import javax.annotation.Nullable;
+import javax.annotation.PostConstruct;
+
 import com.example.telegramxbot.bot.cache.ChatIdCache;
+import com.example.telegramxbot.bot.properties.BotSettings;
+import com.example.telegramxbot.bot.service.RandomService;
 import com.example.telegramxbot.bot.service.feature.HueBotService;
 import com.example.telegramxbot.bot.service.feature.QuoteService;
-import com.example.telegramxbot.bot.service.RandomService;
 import com.example.telegramxbot.bot.service.feature.SorryService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
@@ -16,18 +23,10 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
 @Component
 public class HueBot extends TelegramLongPollingCommandBot {
-    @Value("${bot.huebot.username}")
-    private String username;
-    @Value("${bot.huebot.token}")
-    private String token;
-
+    @Autowired
+    private BotSettings settings;
     @Autowired
     private HueBotService hueBotService;
     @Autowired
@@ -49,23 +48,21 @@ public class HueBot extends TelegramLongPollingCommandBot {
 
     @Override
     public String getBotUsername() {
-        return username;
+        return settings.getUsername();
     }
 
     @Override
     public String getBotToken() {
-        return token;
+        return settings.getToken();
     }
 
     @Override
     public void processNonCommandUpdate(Update update) {
         if (quoteService.isNeedToAnswerWithQuote(update.getMessage())) {
             processQuoteAnswer(update.getMessage());
-        }
-        else if (sorryService.isNeedSorry(update.getMessage(), username)) {
+        } else if (sorryService.isNeedSorry(update.getMessage(), getBotUsername())) {
             processSorryAnswer(update.getMessage());
-        }
-        else {
+        } else {
             processHueAnswer(update);
         }
     }
@@ -95,12 +92,16 @@ public class HueBot extends TelegramLongPollingCommandBot {
         chatIdCache.addToCache(update.getMessage());
     }
 
-    private synchronized void sendAnswer(String chatId, Integer messageId, String text, boolean markdown) {
+    public synchronized void sendAnswer(String chatId, @Nullable Integer replyToMessageId, String text,
+                                        boolean markdown) {
         SendMessage message = SendMessage.builder()
                 .chatId(chatId)
-                .replyToMessageId(messageId)
+                .replyToMessageId(replyToMessageId)
                 .text(text)
                 .build();
+        if (replyToMessageId != null) {
+            message.setReplyToMessageId(replyToMessageId);
+        }
         if (markdown) {
             message.enableMarkdownV2(true);
             message.enableMarkdown(true);

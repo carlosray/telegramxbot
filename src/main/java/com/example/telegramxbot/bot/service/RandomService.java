@@ -1,27 +1,32 @@
 package com.example.telegramxbot.bot.service;
 
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.example.telegramxbot.bot.properties.BotSettings;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class RandomService {
-    private ConcurrentMap<Long, AtomicInteger> countMap = new ConcurrentHashMap<>();
-    @Value("${bot.huebot.messages.count.min}")
-    private int min;
-    @Value("${bot.huebot.messages.count.max}")
-    private int max;
+    private final ConcurrentMap<Long, AtomicInteger> countMap = new ConcurrentHashMap<>();
+    private final Random random = new Random();
+    private final BotSettings settings;
 
-    public AtomicInteger getRandomCount() {
-        return this.getRandomCount(this.min, this.max);
+    private AtomicInteger getRandomCount() {
+        return this.getRandomCount(
+                settings.getMessages().getCount().getMin(),
+                settings.getMessages().getCount().getMax()
+        );
     }
 
-    public AtomicInteger getRandomCount(double min, double max) {
-        double random = Math.random() * (max - min) + min;
-        return new AtomicInteger((int) Math.round(random));
+    public AtomicInteger getRandomCount(int min, int max) {
+        int num = random.nextInt(max - min) + min;
+        return new AtomicInteger(num);
     }
 
     public boolean isNeedAnswer(Long chatId) {

@@ -1,4 +1,4 @@
-package com.example.telegramxbot.bot.service.feature;
+package com.example.telegramxbot.bot.service.integration;
 
 import com.example.telegramxbot.bot.service.RandomService;
 import com.fasterxml.jackson.databind.ObjectMapper;
