@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+  labels:
+    {{- include "xbot.labels" . | nindent 4 }}
+data:
+  application.properties: |-
+    {{- range $name, $value := .Values.properties }}
+     {{ $name }}={{ $value }}
+    {{- end }}
