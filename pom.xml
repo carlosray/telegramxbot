@@ -17,7 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <liquibase.version>4.7.1</liquibase.version>
-        <postgresql.version>42.3.2</postgresql.version>
+        <postgresql.version>42.3.3</postgresql.version>
         <telegrambots.version>5.4.0.1</telegrambots.version>
         <telegrambotsextensions.version>5.5.0</telegrambotsextensions.version>
         <emoji.version>5.1.1</emoji.version>
