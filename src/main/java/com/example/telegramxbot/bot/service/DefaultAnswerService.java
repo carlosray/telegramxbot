@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class DefaultAnswerService {
-    private DefaultAnswerRepository repository;
-    private RandomService randomService;
+    private final DefaultAnswerRepository repository;
+    private final RandomService randomService;
 
     public String getSorryMessage() {
         return getRandomByType(DefaultAnswer.AnswerType.SORRY).orElse("Извините меня");

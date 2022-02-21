@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>telegramxbot</artifactId>
-    <version>v2.0.0</version>
+    <version>v2.0.1</version>
     <name>telegramxbot</name>
     <description>H_BOT</description>
 

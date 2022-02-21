@@ -9,5 +9,5 @@ RUN mvn -f /home/xbot/pom.xml clean install
 # Package stage
 #
 FROM openjdk:11-jre-slim
-COPY --from=build /home/xbot/target/telegramxbot-v2.0.0.jar /usr/local/lib/telegramxbot-v2.0.0.jar
-ENTRYPOINT ["java","-jar","/usr/local/lib/telegramxbot-v2.0.0.jar"]
+COPY --from=build /home/xbot/target/telegramxbot-v2.0.1.jar /usr/local/lib/telegramxbot-v2.0.1.jar
+ENTRYPOINT ["java","-jar","/usr/local/lib/telegramxbot-v2.0.1.jar"]

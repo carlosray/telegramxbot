@@ -36,6 +36,9 @@ public class GoogleImagesService {
 
     public InputStream getImageInputStream(DayOfWeek dayOfWeek) throws IOException {
         final List<String> urls = getUrls(dayOfWeek);
+        if (urls.isEmpty()) {
+            throw new IllegalStateException("Images not found");
+        }
         final AtomicInteger random = randomService.getRandomCount(0, urls.size() - 1);
         URL url = new URL(urls.get(random.get()));
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();

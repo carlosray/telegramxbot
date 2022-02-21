@@ -1,6 +1,5 @@
 package com.example.telegramxbot.bot.service.feature;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -19,34 +18,28 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class HueBotService {
-    private Map<Character, Character> vowels;
-    private Set<Character> consonants;
+    private final Map<Character, Character> vowels;
+    private final Set<Character> consonants;
     private final DefaultAnswerService defaultAnswerService;
 
     {
-        putVowels();
-        putConsonants();
-    }
+        vowels = Map.of(
+                'а', 'я',
+                'у', 'ю',
+                'о', 'е',
+                'ы', 'и',
+                'и', 'и',
+                'э', 'е',
+                'я', 'я',
+                'ю', 'ю',
+                'е', 'е',
+                'ё', 'ё');
 
-    //а, у, о, ы, и, э, я, ю, ё, е
-    private void putVowels() {
-        vowels = new HashMap<>();
-        vowels.put('а', 'я');
-        vowels.put('у', 'ю');
-        vowels.put('о', 'е');
-        vowels.put('ы', 'и');
-        vowels.put('и', 'и');
-        vowels.put('э', 'е');
-        vowels.put('я', 'я');
-        vowels.put('ю', 'ю');
-        vowels.put('е', 'е');
-        vowels.put('ё', 'ё');
-    }
-
-    //б, в, г, д, ж, з, й, к, л, м, н, п, р, с, т, ф, х, ц, ч, ш, щ
-    private void putConsonants() {
-        consonants = Sets.newHashSet('б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф',
-                'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь');
+        consonants = Sets.newHashSet(
+                'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к',
+                'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф',
+                'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь'
+        );
     }
 
     public String getHueString(String userText) {
@@ -102,7 +95,7 @@ public class HueBotService {
                 .filter(s -> !s.isEmpty())
                 .filter(message -> message.chars()
                         .mapToObj(c -> (char) c)
-                        .anyMatch(c -> vowels.containsKey(c)))
+                        .anyMatch(vowels::containsKey))
                 .map("ху"::concat)
                 .orElse(wildMessage());
     }
