@@ -18,11 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class HueBotService {
-    private final Map<Character, Character> vowels;
-    private final Set<Character> consonants;
+    private final static Map<Character, Character> vowels;
+    private final static Set<Character> consonants;
     private final DefaultAnswerService defaultAnswerService;
 
-    {
+    static {
         vowels = Map.of(
                 'а', 'я',
                 'у', 'ю',

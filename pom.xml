@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>telegramxbot</artifactId>
-    <version>v2.0.1</version>
+    <version>v2.0.2</version>
     <name>telegramxbot</name>
     <description>H_BOT</description>
 
@@ -25,7 +25,6 @@
         <jsoup.version>1.14.3</jsoup.version>
         <cloud-bootstrap.version>3.1.0</cloud-bootstrap.version>
         <cloud-k8s-config.version>1.1.10.RELEASE</cloud-k8s-config.version>
-        <spring-boot.build-image.imageName>carlosray/xbot:${project.version}</spring-boot.build-image.imageName>
     </properties>
 
     <dependencies>

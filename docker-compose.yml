@@ -2,7 +2,7 @@ version: '3.3'
 services: 
     telegramxbot:
         container_name: telegramxbot
-        image: telegramxbot-image
+        image: telegramxbot
         environment:
            - bot.huebot.days-of-week.cron=0 0 9 * * 1-7
            - bot.huebot.days-of-week.zone=Europe/Moscow
