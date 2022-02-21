@@ -26,6 +26,9 @@ public class RandomService {
     }
 
     public <E> Optional<E> getRandomSetElement(Set<E> set) {
+        if (set.isEmpty()) {
+            return Optional.empty();
+        }
         return set.stream().skip(random.nextInt(set.size())).findFirst();
     }
 

@@ -54,10 +54,10 @@ public class GoogleImagesService {
 
         Document doc = Jsoup.connect(url).userAgent(userAgent).referrer("https://www.google.com/").get();
 
-        Elements elements = doc.select("img[data-src]");
+        Elements elements = doc.select("img");
         log.info("found elements: {}", elements.size());
         for (Element element : elements) {
-            resultUrls.add(element.attr("data-src"));
+            resultUrls.add(element.attr("src"));
         }
         log.info("number of results: {}", resultUrls.size());
 

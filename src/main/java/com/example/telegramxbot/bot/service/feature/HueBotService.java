@@ -97,7 +97,7 @@ public class HueBotService {
                         .mapToObj(c -> (char) c)
                         .anyMatch(vowels::containsKey))
                 .map("ху"::concat)
-                .orElse(wildMessage());
+                .orElseGet(this::wildMessage);
     }
 
     private String wildMessage() {
