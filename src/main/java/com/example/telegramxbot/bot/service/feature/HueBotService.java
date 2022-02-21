@@ -1,29 +1,29 @@
 package com.example.telegramxbot.bot.service.feature;
 
-import com.example.telegramxbot.bot.service.RandomService;
-import com.google.common.collect.Sets;
-import com.vdurmont.emoji.EmojiParser;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.example.telegramxbot.bot.service.DefaultAnswerService;
+import com.google.common.collect.Sets;
+import com.vdurmont.emoji.EmojiParser;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class HueBotService {
     private Map<Character, Character> vowels;
     private Set<Character> consonants;
-    @Autowired
-    private RandomService randomService;
-    private final List<String> wildMessages =
-            Arrays.asList("Ну как на такое ответить? просто пошел на хуй..",
-                    "бля..", "езжжи",
-                    "ты угараешь?", "хуйню написал");
+    private final DefaultAnswerService defaultAnswerService;
 
-    public HueBotService() {
+    {
         putVowels();
         putConsonants();
     }
@@ -45,7 +45,8 @@ public class HueBotService {
 
     //б, в, г, д, ж, з, й, к, л, м, н, п, р, с, т, ф, х, ц, ч, ш, щ
     private void putConsonants() {
-        consonants = Sets.newHashSet('б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь');
+        consonants = Sets.newHashSet('б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф',
+                'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь');
     }
 
     public String getHueString(String userText) {
@@ -53,7 +54,8 @@ public class HueBotService {
         if (StringUtils.isNotBlank(emojiRemoved)) {
             return processString(emojiRemoved);
         } else {
-            return "Никому твои ебучие смайлики не нужны";
+            log.info("Message is a Smile");
+            return defaultAnswerService.getSmileMessage();
         }
     }
 
@@ -63,7 +65,8 @@ public class HueBotService {
         if (isCyrillic(lastWordOfSentence)) {
             return concatXue(lastWordOfSentence.toLowerCase());
         } else {
-            return randomText();
+            log.info("Message is not Cyrillic");
+            return wildMessage();
         }
     }
 
@@ -101,12 +104,12 @@ public class HueBotService {
                         .mapToObj(c -> (char) c)
                         .anyMatch(c -> vowels.containsKey(c)))
                 .map("ху"::concat)
-                .orElse(randomText());
+                .orElse(wildMessage());
     }
 
-    private String randomText() {
-        final AtomicInteger random = randomService.getRandomCount(0, wildMessages.size() - 1);
-        return wildMessages.get(random.get());
+    private String wildMessage() {
+        log.info("Getting wild message");
+        return defaultAnswerService.getWildMessage();
     }
 
 }

@@ -1,12 +1,8 @@
 package com.example.telegramxbot.bot.service.feature;
 
-import java.util.List;
-
 import com.example.telegramxbot.bot.HueBot;
 import com.example.telegramxbot.bot.cache.ChatIdCache;
-import com.example.telegramxbot.bot.model.BirthdayInfo;
 import com.example.telegramxbot.bot.service.integration.BalabobaService;
-import com.example.telegramxbot.bot.service.utils.ResourceUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +18,6 @@ public class BirthdayService {
     private ApplicationContext applicationContext;
     private final ChatIdCache chatIdCache;
     private final BalabobaService balabobaService;
-    private final List<BirthdayInfo> infos = ResourceUtils.mapFromResource("birthdays.json");
 
     @Scheduled(cron = "#{botSettings.birthday.cron}", zone = "#{botSettings.birthday.zone}")
     public void sendBirthday() {

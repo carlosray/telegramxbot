@@ -1,13 +1,5 @@
 package com.example.telegramxbot.bot.service.integration;
 
-import com.example.telegramxbot.bot.service.RandomService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -19,6 +11,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.example.telegramxbot.bot.service.RandomService;
+import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
+
+@Slf4j
 @Service
 public class GoogleImagesService {
     private final Map<DayOfWeek, String> searchStrings = new HashMap<>();
@@ -51,12 +52,11 @@ public class GoogleImagesService {
         Document doc = Jsoup.connect(url).userAgent(userAgent).referrer("https://www.google.com/").get();
 
         Elements elements = doc.select("img[data-src]");
-
+        log.info("found elements: {}", elements.size());
         for (Element element : elements) {
             resultUrls.add(element.attr("data-src"));
         }
-        new ObjectMapper();
-        System.out.println("number of results: " + resultUrls.size());
+        log.info("number of results: {}", resultUrls.size());
 
         return resultUrls;
     }

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserEntityRepository extends JpaRepository<UserEntity, Long> {
-    @Query(nativeQuery = true, value = "select distinct group_chat_id from user_entity_group_chat_ids")
+    @Query(value = "select distinct group_chat_id from user_entity_group_chat_ids", nativeQuery = true)
     Set<String> findAllDistinctGroupChatIds();
 }

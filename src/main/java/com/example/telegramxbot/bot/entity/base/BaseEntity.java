@@ -37,21 +37,21 @@ public abstract class BaseEntity implements Serializable {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss:SSS")
     @CreationTimestamp
-    @Column(name = "last_modified_date", updatable = false)
-    private LocalDateTime creationDate;
+    @Column(name = "creation_date", updatable = false)
+    private LocalDateTime creationDate = LocalDateTime.now();
 
     @CreatedBy
     @Column(name = "created_by", updatable = false)
-    private String createdBy;
+    private String createdBy = "default";
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss:SSS")
     @UpdateTimestamp
     @Column(name = "modified_date")
-    private LocalDateTime modifiedDate;
+    private LocalDateTime modifiedDate = LocalDateTime.now();
 
     @LastModifiedBy
     @Column(name = "modified_by")
-    private String modifiedBy;
+    private String modifiedBy = "default";
 
     @Override
     public boolean equals(Object o) {

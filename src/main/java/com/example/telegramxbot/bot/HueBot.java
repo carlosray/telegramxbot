@@ -13,17 +13,21 @@ import com.example.telegramxbot.bot.service.RandomService;
 import com.example.telegramxbot.bot.service.feature.HueBotService;
 import com.example.telegramxbot.bot.service.feature.QuoteService;
 import com.example.telegramxbot.bot.service.feature.SorryService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+@Slf4j
 @Component
+@RequiredArgsConstructor
 public class HueBot extends TelegramLongPollingCommandBot {
     @Autowired
     private BotSettings settings;
@@ -68,10 +72,12 @@ public class HueBot extends TelegramLongPollingCommandBot {
     }
 
     private void processQuoteAnswer(Message message) {
+        log.info("Processing quote answer");
         sendAnswer(message.getChatId().toString(), message.getMessageId(), quoteService.getQuote(), true);
     }
 
     private void processSorryAnswer(Message message) {
+        log.info("Processing sorry answer");
         sendAnswer(message.getChatId().toString(), message.getMessageId(), sorryService.getSorryMessage(), false);
     }
 
@@ -84,16 +90,25 @@ public class HueBot extends TelegramLongPollingCommandBot {
                 .findAny()
                 .filter(message -> randomService.isNeedAnswer(message.getChatId()))
                 .ifPresent(message -> {
+                    log.info("Processing hue answer");
                     String hueString = hueBotService.getHueString(message.getText());
                     if (StringUtils.isNotBlank(hueString)) {
                         sendAnswer(message.getChatId().toString(), message.getMessageId(), hueString, false);
                     }
                 });
-        chatIdCache.addToCache(update.getMessage());
+        chatIdCache.addToCache(update.getMessage().getChat());
     }
 
-    public synchronized void sendAnswer(String chatId, @Nullable Integer replyToMessageId, String text,
-                                        boolean markdown) {
+    public synchronized void sendImage(SendPhoto messageImage) {
+        try {
+            super.execute(messageImage);
+            log.info("Sent image to chatId {}", messageImage.getChatId());
+        } catch (Exception e) {
+            log.error("Error image sending", e);
+        }
+    }
+
+    public synchronized void sendAnswer(String chatId, @Nullable Integer replyToMessageId, String text, boolean markdown) {
         SendMessage message = SendMessage.builder()
                 .chatId(chatId)
                 .replyToMessageId(replyToMessageId)
@@ -109,8 +124,9 @@ public class HueBot extends TelegramLongPollingCommandBot {
         }
         try {
             super.execute(message);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
+            log.info("Sent answer to chatId {}", message.getChatId());
+        } catch (Exception e) {
+            log.error("Error answer sending", e);
         }
     }
 }

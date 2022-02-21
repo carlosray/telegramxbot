@@ -35,16 +35,17 @@ public class DaysOfWeekService {
 
     @Scheduled(cron = "#{botSettings.daysOfWeek.cron}", zone = "#{botSettings.daysOfWeek.zone}")
     public void sendImage() {
-        this.sendImage(chatIdCache.getGroupChatIds());
+        this.sendImage(chatIdCache.getChatIds());
     }
 
-    public void sendImage(Set<String> chatIds) {
+    public void sendImage(Set<Long> chatIds) {
+        log.info("Sending images to chats {}", chatIds);
         chatIds.forEach(chatId -> {
             final DayOfWeek dayOfWeek = getDayOfWeek();
             try (InputStream resourceInputStream = getResourceInputStream(dayOfWeek)) {
                 sendImageToTelegram(chatId, resourceInputStream, imageFileName(dayOfWeek));
-            } catch (IOException e) {
-                log.error("Ошибка получения картинки", e);
+            } catch (IOException ex) {
+                log.error("Error getting image", ex);
             }
         });
     }
@@ -53,6 +54,7 @@ public class DaysOfWeekService {
         try {
             return imagesService.getImageInputStream(dayOfWeek);
         } catch (Exception ex) {
+            log.error("Error while searching for image. Going to classpath", ex);
             return getClassPathResource(dayOfWeek);
         }
     }
@@ -66,17 +68,13 @@ public class DaysOfWeekService {
         return dayOfWeek.name().toLowerCase().concat(FORMAT);
     }
 
-    private synchronized void sendImageToTelegram(String chatId, InputStream resourceInputStream, String fileName) {
+    private synchronized void sendImageToTelegram(Long chatId, InputStream resourceInputStream, String fileName) {
         SendPhoto messageImage = SendPhoto.builder()
-                .chatId(chatId)
+                .chatId(chatId.toString())
                 .photo(new InputFile(resourceInputStream, fileName))
                 .build();
-        try {
-            final HueBot hueBot = applicationContext.getBean(HueBot.class);
-            hueBot.execute(messageImage);
-        } catch (Exception e) {
-            log.error("Ошибка отправки сообщения", e);
-        }
+        final HueBot hueBot = applicationContext.getBean(HueBot.class);
+        hueBot.sendImage(messageImage);
     }
 
     private DayOfWeek getDayOfWeek() {

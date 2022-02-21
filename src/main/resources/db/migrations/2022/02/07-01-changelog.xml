@@ -6,14 +6,19 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
     <changeSet id="1644243624966-1" author="vasilenko-mni (generated)">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_entity"/>
+            </not>
+        </preConditions>
         <createTable tableName="user_entity">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_userentity"/>
             </column>
-            <column name="last_modified_date" type="DATETIME"/>
-            <column name="created_by" type="VARCHAR(255)"/>
-            <column name="modified_date" type="DATETIME"/>
-            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="creation_date" type="DATETIME" defaultValueComputed="${now}"/>
+            <column name="created_by" type="VARCHAR(255)" defaultValueComputed="${default_user}"/>
+            <column name="modified_date" type="DATETIME" defaultValueComputed="${now}"/>
+            <column name="modified_by" type="VARCHAR(255)" defaultValueComputed="${default_user}"/>
             <column name="login" type="VARCHAR(255)"/>
             <column name="first_name" type="VARCHAR(255)"/>
             <column name="birthday_day" type="INT">
@@ -25,6 +30,11 @@
         </createTable>
     </changeSet>
     <changeSet id="1644243624966-2" author="vasilenko-mni (generated)">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_entity_group_chat_ids"/>
+            </not>
+        </preConditions>
         <createTable tableName="user_entity_group_chat_ids">
             <column name="user_entity_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -33,9 +43,14 @@
         </createTable>
     </changeSet>
     <changeSet id="1644243624966-3" author="vasilenko-mni (generated)">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyTableName="user_entity_group_chat_ids"
+                                            foreignKeyName="fk_userentity_groupchatids_on_user_entity"/>
+            </not>
+        </preConditions>
         <addForeignKeyConstraint baseColumnNames="user_entity_id" baseTableName="user_entity_group_chat_ids"
                                  constraintName="fk_userentity_groupchatids_on_user_entity" referencedColumnNames="id"
                                  referencedTableName="user_entity"/>
     </changeSet>
-
 </databaseChangeLog>

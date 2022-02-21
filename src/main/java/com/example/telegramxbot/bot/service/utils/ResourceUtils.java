@@ -10,11 +10,11 @@ import org.springframework.core.io.ClassPathResource;
 @Slf4j
 public class ResourceUtils {
 
-    public static @Nullable <T> T mapFromResource(String filename) {
+    public static @Nullable <T> T mapFromResource(String filename, TypeReference<T> reference) {
         try {
-            ClassPathResource resource = new ClassPathResource("quotes.json");
+            ClassPathResource resource = new ClassPathResource(filename);
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(resource.getInputStream(), new TypeReference<>() { });
+            return objectMapper.readValue(resource.getInputStream(), reference);
         } catch (Exception ex) {
             log.error("Ошибка десериализации ресурса " + filename, ex);
             return null;

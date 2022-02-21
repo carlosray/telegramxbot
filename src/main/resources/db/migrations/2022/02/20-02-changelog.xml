@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Я уверен: нельзя позволять, чтобы тебя остановило убогое словцо «нельзя».</column>
+            <column name="author">Ричард Брэнсон</column>
+        </insert>
+    </changeSet>
+    <changeSet id="2" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Лучшая месть – огромный успех.</column>
+            <column name="author">Фрэнк Синатра</column>
+        </insert>
+    </changeSet>
+    <changeSet id="3" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">За свою карьеру я пропустил более 9000 бросков, проиграл почти 300 игр. 26 раз мне
+                доверяли сделать финальный победный бросок, и я промахивался. Я терпел поражения снова, и снова, и
+                снова. И именно поэтому я добился успеха.
+            </column>
+            <column name="author">Майкл Джордан</column>
+        </insert>
+    </changeSet>
+    <changeSet id="4" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Настоящая ответственность бывает только личной.</column>
+            <column name="author">Фазиль Искандер</column>
+        </insert>
+    </changeSet>
+    <changeSet id="5" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Все дети - художники. Проблема в том, чтобы остаться художником, когда ты вырос.
+            </column>
+            <column name="author">Пабло Пикассо</column>
+        </insert>
+    </changeSet>
+    <changeSet id="6" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Ты можешь сказать, что у тебя плохая генетика, плохой обмен веществ, а можешь просто
+                поднять свою задницу с дивана и начать работать над собой, задаться целью и верить в себя. В этом случае
+                ты обязательно добьешься успеха.
+            </column>
+            <column name="author">Арнольд Шварцнеггер</column>
+        </insert>
+    </changeSet>
+    <changeSet id="7" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Как можно быстрее превращайте ваши масштабные мысли в масштабные действия. Не позволяйте
+                ложным отговоркам затормозить вас. Отговорки – симптомы страха.
+            </column>
+            <column name="author">Дональд Трамп</column>
+        </insert>
+    </changeSet>
+    <changeSet id="8" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Мудрый человек требует всего только от себя, ничтожный же человек требует всего от
+                других.
+            </column>
+            <column name="author">Лев Толстой</column>
+        </insert>
+    </changeSet>
+    <changeSet id="9" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Надо любить жизнь больше, чем смысл жизни.</column>
+            <column name="author">Федор Достоевский</column>
+        </insert>
+    </changeSet>
+    <changeSet id="10" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Я лучше умру от страсти, чем от скуки.</column>
+            <column name="author">Винсент ван Гог</column>
+        </insert>
+    </changeSet>
+    <changeSet id="11" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Упади семь раз и восемь раз поднимись.</column>
+            <column name="author">Японская поговорка</column>
+        </insert>
+    </changeSet>
+    <changeSet id="12" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">80% успеха - это появиться в нужном месте в нужное время.</column>
+            <column name="author">Вуди Аллен</column>
+        </insert>
+    </changeSet>
+    <changeSet id="13" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Если вы думаете, что на что-то способны, вы правы; если думаете, что у вас ничего не
+                получится - вы тоже правы.
+            </column>
+            <column name="author">Генри Форд</column>
+        </insert>
+    </changeSet>
+    <changeSet id="14" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Поражение – не поражение, если только вы не признаете его таковым в своем сознании.
+            </column>
+            <column name="author">Брюс Ли</column>
+        </insert>
+    </changeSet>
+    <changeSet id="15" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Как прекрасно, что не нужно ждать ни минуты, чтобы начать делать мир лучше.</column>
+            <column name="author">Анна Франк</column>
+        </insert>
+    </changeSet>
+    <changeSet id="16" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Победа - это еще не все, все - это постоянное желание побеждать.</column>
+            <column name="author">Винс Ломбарди, тренер по американскому футболу</column>
+        </insert>
+    </changeSet>
+    <changeSet id="17" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Люди забудут, что ты говорил, забудут, что ты делал, но никогда не забудут, что ты
+                заставил их почувствовать.
+            </column>
+            <column name="author">Майя Энджелоу, писательница и поэтесса</column>
+        </insert>
+    </changeSet>
+    <changeSet id="18" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Перед тем как карабкаться на лестницу успеха, убедитесь, что она прислонена к стене того
+                здания, что вам нужно.
+            </column>
+            <column name="author">Стивен Кови</column>
+        </insert>
+    </changeSet>
+    <changeSet id="19" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Каждый хочет изменить человечество, но никто не задумывается о том, как изменить себя.
+            </column>
+            <column name="author">Лев Толстой</column>
+        </insert>
+    </changeSet>
+    <changeSet id="20" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Ты становишься тем, во что веришь.</column>
+            <column name="author">Опра Уинфри, телеведущая</column>
+        </insert>
+    </changeSet>
+    <changeSet id="21" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Лучшее время, чтобы посадить дерево, было 20 лет назад. Следующий подходящий момент -
+                сегодня.
+            </column>
+            <column name="author">Китайская пословица</column>
+        </insert>
+    </changeSet>
+    <changeSet id="22" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Надеюсь, что в конце своих дней, когда я предстану перед Богом, у меня не останется ни
+                капли таланта, чтобы я могла сказать ему: “Я использовала все, что ты дал мне”.
+            </column>
+            <column name="author">Эрма Бомбек, писатель, журналист</column>
+        </insert>
+    </changeSet>
+    <changeSet id="23" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Два самых важных дня в твоей жизни: день, когда ты появился на свет, и день, когда
+                понял, зачем.
+            </column>
+            <column name="author">Марк Твен</column>
+        </insert>
+    </changeSet>
+    <changeSet id="24" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Определенность цели - отправная точка всех достижений.</column>
+            <column name="author">Уильям Клемент Стоун, писатель и бизнесмен</column>
+        </insert>
+    </changeSet>
+    <changeSet id="25" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Когда кажется, что весь мир настроен против вас, вспомните, что самолет взлетает не по
+                ветру, а против него.
+            </column>
+            <column name="author">Генри Форд</column>
+        </insert>
+    </changeSet>
+    <changeSet id="26" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Ни разу не упасть — не самая большая заслуга в жизни. Главное каждый раз подниматься.
+            </column>
+            <column name="author">Нельсон Мандела</column>
+        </insert>
+    </changeSet>
+    <changeSet id="27" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Запомните, никто не может заставить вас чувствовать себя неполноценным без вашего на то
+                согласия.
+            </column>
+            <column name="author">Элеонор Рузвельт</column>
+        </insert>
+    </changeSet>
+    <changeSet id="28" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Если вы думаете о том, что имеете в жизни, вы всегда сможете иметь больше. Если же вы
+                считаете, чего у вас нет, вам никогда не будет достаточно.
+            </column>
+            <column name="author">Опра Уинфри</column>
+        </insert>
+    </changeSet>
+    <changeSet id="29" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Запомните, что не достичь успеха – иногда тоже большая удача.</column>
+            <column name="author">Далай Лама</column>
+        </insert>
+    </changeSet>
+    <changeSet id="30" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Свобода ничего не стоит, если она не включает в себя свободу ошибаться.</column>
+            <column name="author">Махатма Ганди</column>
+        </insert>
+    </changeSet>
+    <changeSet id="31" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Всегда опирайтесь на мысль о том, что ваше собственное решение добиться успеха намного
+                важнее всего другого.
+            </column>
+            <column name="author">Авраам Линкольн</column>
+        </insert>
+    </changeSet>
+    <changeSet id="32" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Я не жертва обстоятельств, я - результат моих решений.</column>
+            <column name="author">Стивен Кови, консультант и преподаватель по организационному управлению</column>
+        </insert>
+    </changeSet>
+    <changeSet id="33" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Всякая мысль подобна тесту, стоит помять ее хорошенько — все из нее сделаешь.</column>
+            <column name="author">Иван Тургенев</column>
+        </insert>
+    </changeSet>
+    <changeSet id="34" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Выживает не самый сильный, а самый восприимчивый к переменам.</column>
+            <column name="author">Чарльз Дарвин</column>
+        </insert>
+    </changeSet>
+    <changeSet id="35" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Велики те, кто видит, что миром правят мысли.</column>
+            <column name="author">Ральф Эмерсон</column>
+        </insert>
+    </changeSet>
+    <changeSet id="36" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Логика может привести Вас от пункта А к пункту Б, а воображение — куда угодно.</column>
+            <column name="author">Альберт Эйнштейн</column>
+        </insert>
+    </changeSet>
+    <changeSet id="37" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Я не провалил тест. Я просто нашел сто способов написать его неправильно.</column>
+            <column name="author">Бенджамин Франклин</column>
+        </insert>
+    </changeSet>
+    <changeSet id="38" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Одна законченная результативная задача стоит полусотни полузаконченных задач.</column>
+            <column name="author">Малкольм Форбс</column>
+        </insert>
+    </changeSet>
+    <changeSet id="39" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Идите уверенно по направлению к мечте. Живите той жизнью, которую вы сами себе
+                придумали.
+            </column>
+            <column name="author">Генри Дэвид Торо, писатель, мыслитель, натуралист</column>
+        </insert>
+    </changeSet>
+    <changeSet id="40" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Если ты хочешь построить корабль, не надо созывать людей, планировать, делить работу,
+                доставать инструменты. Надо заразить людей стремлением к бесконечному морю. Тогда они сами построят
+                корабль.
+            </column>
+            <column name="author">Антуан де Сент-Экзюпери</column>
+        </insert>
+    </changeSet>
+    <changeSet id="41" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Есть только один способ избежать критики: ничего не делайте, ничего не говорите и будьте
+                никем.
+            </column>
+            <column name="author">Аристотель</column>
+        </insert>
+    </changeSet>
+    <changeSet id="42" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Всегда выбирайте самый трудный путь - на нем вы не встретите конкурентов.</column>
+            <column name="author">Шарль де Голль</column>
+        </insert>
+    </changeSet>
+    <changeSet id="43" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Сложнее всего начать действовать, все остальное зависит только от упорства.</column>
+            <column name="author">Амелия Эрхарт</column>
+        </insert>
+    </changeSet>
+    <changeSet id="44" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">В моем словаре нет слова «невозможно».</column>
+            <column name="author">Наполеон Бонапарт</column>
+        </insert>
+    </changeSet>
+    <changeSet id="45" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Наша жизнь начинает подходить к концу, когда мы перестаём говорить о действительно
+                важных вещах.
+            </column>
+            <column name="author">Мартин Лютер Кинг-младший</column>
+        </insert>
+    </changeSet>
+    <changeSet id="46" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Начните оттуда, где вы сейчас находитесь. Используйте то, что у вас есть и делайте все,
+                что можете.
+            </column>
+            <column name="author">Артур Эш, теннисист</column>
+        </insert>
+    </changeSet>
+    <changeSet id="47" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Никогда не думайте, что вы уже все знаете. И как бы высоко не оценивали вас, всегда
+                имейте мужество сказать себе: «Я невежда».
+            </column>
+            <column name="author">Иван Павлов, ученый-физиолог</column>
+        </insert>
+    </changeSet>
+    <changeSet id="48" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Чтобы вести людей за собой, иди за ними.</column>
+            <column name="author">Лао Цзы</column>
+        </insert>
+    </changeSet>
+    <changeSet id="49" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Своим успехом я обязана тому, что никогда не оправдывалась и не принимала оправданий от
+                других.
+            </column>
+            <column name="author">Флоренс Найтингейл</column>
+        </insert>
+    </changeSet>
+    <changeSet id="50" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Успех — это способность идти от поражения к поражению, не теряя оптимизма</column>
+            <column name="author">Уинстон Черчилль</column>
+        </insert>
+    </changeSet>
+    <changeSet id="51" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Начинайте делать все, что вы можете сделать – и даже то, о чем можете хотя бы мечтать. В
+                смелости гений, сила и магия.
+            </column>
+            <column name="author">Иоганн Вольфганг Гете</column>
+        </insert>
+    </changeSet>
+    <changeSet id="52" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">У истоков каждого успешного предприятия стоит однажды принятое смелое решение.</column>
+            <column name="author">Питер Друкер, американский экономист</column>
+        </insert>
+    </changeSet>
+    <changeSet id="53" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Некоторые вещи могут завладеть вашим вниманием, но сосредоточьтесь лучше на тех, что
+                завладевают вашим сердцем.
+            </column>
+            <column name="author">Индийская поговорка</column>
+        </insert>
+    </changeSet>
+    <changeSet id="54" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Не столь важно, как медленно ты идешь, как то, как долго ты идешь, не останавливаясь.
+            </column>
+            <column name="author">Конфуций</column>
+        </insert>
+    </changeSet>
+    <changeSet id="55" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Счастье не в том, чтобы делать всегда, что хочешь, а в том, чтобы всегда хотеть того,
+                что делаешь.
+            </column>
+            <column name="author">Лев Толстой</column>
+        </insert>
+    </changeSet>
+    <changeSet id="56" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Жизнь меряется не тем, сколько в ней лет, а тем, сколько в этих годах настоящей жизни.
+            </column>
+            <column name="author">Авраам Линкольн</column>
+        </insert>
+    </changeSet>
+    <changeSet id="57" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Начинать всегда стоит с того, что сеет сомнения.</column>
+            <column name="author">Борис Стругацкий</column>
+        </insert>
+    </changeSet>
+    <changeSet id="58" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Беда не приходит одна, но и удача тоже.</column>
+            <column name="author">Ромен Роллан, писатель</column>
+        </insert>
+    </changeSet>
+    <changeSet id="59" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Делай все, что можешь, там, где ты находишься, используя все, что имеешь.</column>
+            <column name="author">Теодор Рузвельт</column>
+        </insert>
+    </changeSet>
+    <changeSet id="60" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Жизнь - это то, что с тобой происходит, пока ты строишь планы.</column>
+            <column name="author">Джон Леннон</column>
+        </insert>
+    </changeSet>
+    <changeSet id="61" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Единственный способ сделать что-то очень хорошо – любить то, что ты делаешь.</column>
+            <column name="author">Стив Джобс</column>
+        </insert>
+    </changeSet>
+    <changeSet id="62" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Если вам предлагают место в ракетоносителе, не спрашивайте, что за место! Просто займите
+                его.
+            </column>
+            <column name="author">Шерил Сэндберг, операционный директор Facebook</column>
+        </insert>
+    </changeSet>
+    <changeSet id="63" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Сначала определитесь со своим идеалом: поставьте цель. Потом запаситесь необходимыми
+                средствами для её достижения: мудростью, деньгами, методами и материалами. И, наконец, используйте все
+                свои средства для достижения цели.
+            </column>
+            <column name="author">Аристотель</column>
+        </insert>
+    </changeSet>
+    <changeSet id="64" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Они спрашивают: «Как ты можешь управиться со всеми делами за пятнадцать минут?» Я
+                отвечаю: «Это просто. Надо не терять ни единой секунды».
+            </column>
+            <column name="author">Ричард Брэнсон, британский предприниматель, основатель корпорации Virgin</column>
+        </insert>
+    </changeSet>
+    <changeSet id="65" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Наука — это организованные знания, мудрость — это организованная жизнь.</column>
+            <column name="author">Иммануил Кант</column>
+        </insert>
+    </changeSet>
+    <changeSet id="66" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Научитесь говорить “Я не знаю”, и это уже будет прогресс.</column>
+            <column name="author">Моисей Маймонид, еврейский философ и богослов</column>
+        </insert>
+    </changeSet>
+    <changeSet id="67" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Когда мне было 5 лет, мама всегда говорила, что главное в жизни – счастье. Когда я пошел
+                в школу, на вопрос, кем я хочу быть, когда вырасту, я ответил “счастливым человеком”. Мне тогда сказали,
+                что я не понимаю вопроса, а я ответил, что это они не понимают жизни.
+            </column>
+            <column name="author">Джон Леннон</column>
+        </insert>
+    </changeSet>
+    <changeSet id="68" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Наше сознание - это все. Вы становитесь тем, о чем думаете.</column>
+            <column name="author">Будда</column>
+        </insert>
+    </changeSet>
+    <changeSet id="69" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Либо вы управляете вашим днем, либо день управляет вами.</column>
+            <column name="author">Джим Рон, оратор и бизнес-тренер</column>
+        </insert>
+    </changeSet>
+    <changeSet id="70" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Счастье – это не нечто готовое. Счастье зависит только от ваших действий.</column>
+            <column name="author">Далай Лама</column>
+        </insert>
+    </changeSet>
+    <changeSet id="71" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Приносить пользу миру — это единственный способ стать счастливым.</column>
+            <column name="author">Ханс Кристиан Андерсен</column>
+        </insert>
+    </changeSet>
+    <changeSet id="72" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Важно верить, что талант нам даётся не просто так – и что любой ценой его нужно для
+                чего-то использовать.
+            </column>
+            <column name="author">Мари Кюри</column>
+        </insert>
+    </changeSet>
+    <changeSet id="73" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Все дело в мыслях. Мысль — начало всего. И мыслями можно управлять. И поэтому главное
+                дело совершенствования: работать над мыслями.
+            </column>
+            <column name="author">Лев Толстой</column>
+        </insert>
+    </changeSet>
+    <changeSet id="74" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Мир делится на два класса — одни веруют в невероятное, другие совершают невозможное.
+            </column>
+            <column name="author">Оскар Уайлд</column>
+        </insert>
+    </changeSet>
+    <changeSet id="75" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Вы никогда не пересечете океан, если не наберетесь мужества потерять берег из виду.
+            </column>
+            <column name="author">Христофор Колумб</column>
+        </insert>
+    </changeSet>
+    <changeSet id="76" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Что такое деньги? Человек успешен, если утром он просыпается, вечером возвращается в
+                постель, а в перерыве делает то, что ему нравится.
+            </column>
+            <column name="author">Боб Дилан</column>
+        </insert>
+    </changeSet>
+    <changeSet id="77" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">У всего есть своя красота, но не каждый может ее увидеть.</column>
+            <column name="author">Конфуций</column>
+        </insert>
+    </changeSet>
+    <changeSet id="78" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Мы становимся тем, о чем мы думаем.</column>
+            <column name="author">Эрл Найтингейл, радиоведущий</column>
+        </insert>
+    </changeSet>
+    <changeSet id="79" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Неосмысленная жизнь не стоит того, чтобы жить.</column>
+            <column name="author">Сократ</column>
+        </insert>
+    </changeSet>
+    <changeSet id="80" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Если нет ветра, беритесь за вёсла.</column>
+            <column name="author">Латинская поговорка</column>
+        </insert>
+    </changeSet>
+    <changeSet id="81" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Не стоит винить ребенка за то, что он боится темноты. Настоящая трагедия – это когда
+                взрослый человек боится света.
+            </column>
+            <column name="author">Платон</column>
+        </insert>
+    </changeSet>
+    <changeSet id="82" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Слабые люди всю жизнь стараются быть не хуже других. Сильным во что бы то ни стало нужно
+                стать лучше всех.
+            </column>
+            <column name="author">Борис Акунин</column>
+        </insert>
+    </changeSet>
+    <changeSet id="83" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Когда я освобождаюсь от того, кто я есть, я становлюсь тем, кем я могу быть.</column>
+            <column name="author">Лао Цзы</column>
+        </insert>
+    </changeSet>
+    <changeSet id="84" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Человек, которым вам суждено стать – это только тот человек, которым вы сами решите
+                стать.
+            </column>
+            <column name="author">Ральф Уолдо Эмерсон, эссеист, поэт и философ</column>
+        </insert>
+    </changeSet>
+    <changeSet id="85" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Лучше быть уверенным в хорошем результате, чем надеяться на отличный.</column>
+            <column name="author">Уоррен Баффет</column>
+        </insert>
+    </changeSet>
+    <changeSet id="86" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Когда закрывается одна дверь к счастью, тут же открывается другая. Но мы часто так долго
+                смотрим на первую, что не замечаем вторую.
+            </column>
+            <column name="author">Элен Келлер, писательница, лектор, политическая активистка</column>
+        </insert>
+    </changeSet>
+    <changeSet id="87" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Если внутренний голос говорит вам, что вы не можете рисовать – рисуйте как можно больше,
+                тогда этот голос затихнет.
+            </column>
+            <column name="author">Винсент Ван Гог</column>
+        </insert>
+    </changeSet>
+    <changeSet id="88" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Никогда не делает ошибок только тот, кто не пробует ничего нового.</column>
+            <column name="author">Альберт Эйнштейн</column>
+        </insert>
+    </changeSet>
+    <changeSet id="89" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Быстрее всего учишься в трех случаях — до 7 лет, на тренингах, и когда жизнь загнала
+                тебя в угол.
+            </column>
+            <column name="author">Стивен Кови</column>
+        </insert>
+    </changeSet>
+    <changeSet id="90" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Я был поражен тем, как важно предпринимать действия. Недостаточно просто знать, нужно
+                использовать знания. Мало хотеть чего-то, нужно делать.
+            </column>
+            <column name="author">Леонардо да Винчи</column>
+        </insert>
+    </changeSet>
+    <changeSet id="91" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Ваше время ограничено, не тратьте его, живя чужой жизнью</column>
+            <column name="author">Стив Джобс</column>
+        </insert>
+    </changeSet>
+    <changeSet id="92" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Единственное счастье в жизни — это постоянное стремление вперед.</column>
+            <column name="author">Эмиль Золя</column>
+        </insert>
+    </changeSet>
+    <changeSet id="93" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Либо напиши что-нибудь стоящее, либо делай что-нибудь, о чем стоит написать.</column>
+            <column name="author">Бенджамин Франклин</column>
+        </insert>
+    </changeSet>
+    <changeSet id="94" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Неудача – это просто возможность начать снова, но уже более мудро.</column>
+            <column name="author">Генри Форд</column>
+        </insert>
+    </changeSet>
+    <changeSet id="95" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Что разум человека может постигнуть и во что он может поверить, того он способен
+                достичь
+            </column>
+            <column name="author">Наполеон Хилл, журналист и писатель</column>
+        </insert>
+    </changeSet>
+    <changeSet id="96" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Стремитесь не к успеху, а к ценностям, которые он дает</column>
+            <column name="author">Альберт Эйнштейн</column>
+        </insert>
+    </changeSet>
+    <changeSet id="97" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Стоит только поверить, что вы можете – и вы уже на полпути к цели.</column>
+            <column name="author">Теодор Рузвельт</column>
+        </insert>
+    </changeSet>
+    <changeSet id="98" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Через 20 лет вы будете больше разочарованы теми вещами, которые вы не делали, чем теми,
+                которые вы сделали. Так отчальте от тихой пристани. Почувствуйте попутный ветер в вашем парусе.
+                Двигайтесь вперед, действуйте, открывайте!
+            </column>
+            <column name="author">Марк Твен</column>
+        </insert>
+    </changeSet>
+    <changeSet id="99" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Вопрос не в том, кто мне разрешит, а в том, кто сможет мне запретить.</column>
+            <column name="author">Айн Рэнд</column>
+        </insert>
+    </changeSet>
+    <changeSet id="100" author="carlosray">
+        <insert tableName="quote">
+            <column name="text">Зачастую говорят, что мотивации хватает ненадолго. Но то же самое происходит и с
+                освежающим душем, поэтому и рекомендуют его принимать ежедневно.
+            </column>
+            <column name="author">Зиг Зиглар, писатель, бизнесмен и консультант по маркетингу</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,13 +1,14 @@
 package com.example.telegramxbot.bot.service;
 
+import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.example.telegramxbot.bot.properties.BotSettings;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,10 @@ public class RandomService {
                 settings.getMessages().getCount().getMin(),
                 settings.getMessages().getCount().getMax()
         );
+    }
+
+    public <E> Optional<E> getRandomSetElement(Set<E> set) {
+        return set.stream().skip(random.nextInt(set.size())).findFirst();
     }
 
     public AtomicInteger getRandomCount(int min, int max) {

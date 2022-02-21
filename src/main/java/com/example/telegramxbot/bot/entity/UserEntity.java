@@ -16,18 +16,20 @@ import javax.validation.constraints.NotBlank;
 
 import com.example.telegramxbot.bot.entity.base.BaseEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "UserEntity.existsBy", query = "select (count(u) > 0) from UserEntity u")
+        @NamedQuery(name = "UserEntity.existsBy", query = "select (count(u) > 0) from UserEntity u"),
+        @NamedQuery(name = "UserEntity.allDistinctGroupChat", query = "select (count(u) > 0) from UserEntity u")
 })
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class UserEntity extends BaseEntity {
     @Nullable
     @Column(name = "login")
