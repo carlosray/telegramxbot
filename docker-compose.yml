@@ -8,7 +8,7 @@ services:
            - bot.huebot.days-of-week.zone=Europe/Moscow
            - bot.huebot.messages.count.max=10
            - bot.huebot.messages.count.min=6
-        restart: "always"
+        restart: unless-stopped
     postgres-xbot:
         container_name: postgres-xbot
         image: postgres
@@ -17,7 +17,7 @@ services:
           - POSTGRES_USER=xbot_user
           - POSTGRES_DB=xbot
           - POSTGRES_HOST_AUTH_METHOD=trust
-        restart: "always"
+        restart: unless-stopped
         ports: [ "5432:5432" ]
 
 

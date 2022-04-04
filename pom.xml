@@ -15,15 +15,15 @@
     <description>H_BOT</description>
 
     <properties>
-        <java.version>11</java.version>
-        <liquibase.version>4.7.1</liquibase.version>
+        <java.version>17</java.version>
+        <liquibase.version>4.9.0</liquibase.version>
         <postgresql.version>42.3.3</postgresql.version>
-        <telegrambots.version>5.4.0.1</telegrambots.version>
-        <telegrambotsextensions.version>5.5.0</telegrambotsextensions.version>
+        <telegrambots.version>5.7.1</telegrambots.version>
+        <telegrambotsextensions.version>5.7.1</telegrambotsextensions.version>
         <emoji.version>5.1.1</emoji.version>
         <commonslang3.version>3.12.0</commonslang3.version>
         <jsoup.version>1.14.3</jsoup.version>
-        <cloud-bootstrap.version>3.1.0</cloud-bootstrap.version>
+        <cloud-bootstrap.version>3.1.1</cloud-bootstrap.version>
         <cloud-k8s-config.version>1.1.10.RELEASE</cloud-k8s-config.version>
     </properties>
 

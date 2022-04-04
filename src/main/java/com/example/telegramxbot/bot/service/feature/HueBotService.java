@@ -76,7 +76,10 @@ public class HueBotService {
 
     private String getLastWordOfSentence(String sentence) {
         Pattern pattern = Pattern.compile("\\s*(\\s|,|!|\\.|\\?)\\s*");
-        String[] split = pattern.split(sentence);
+        String[] split = pattern.split(sentence.replace(")", ""));
+        if (split.length == 0) {
+            throw new RuntimeException("Не найдено последнее слово в предложении");
+        }
         return split[split.length - 1];
     }
 

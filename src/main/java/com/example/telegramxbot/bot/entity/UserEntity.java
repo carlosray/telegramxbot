@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.Max;
@@ -36,7 +37,7 @@ public class UserEntity extends BaseEntity {
     private String login;
 
     @NotBlank
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(name = "group_chat_id")
     private Collection<String> groupChatIds;
 
